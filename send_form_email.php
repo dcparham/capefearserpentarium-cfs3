@@ -17,12 +17,13 @@ if(isset($_POST['email']) && $_POST['randcheck']==$_SESSION['rand']) {
 	function successMessage($message){
 		$message = $message;
 		//$message = "Your message was sent successfully - expect a reply soon!  Thank you!";
-		return "<div class='message'>$message</div>";
+		//return "<div id='messageInfo' class='message'>$message</div>";
+		//return "<script type='text/javascript'>document.getElementById('messageInfo').innerHTML = 'HELLO';</script>";
 	}
 	
 	function failureMessage($message){
 		//$message = "Your message was sent successfully - expect a reply soon!  Thank you!";
-		return "<div class='message'>$message</div>";
+		//return "<div id='messageInfo' class='message'>$message</div>";
 	}
 
     function died($error) { 
@@ -96,7 +97,7 @@ if (trim($email_message) == true && strlen($error_message) < 1) {
 	$OUTPUT = successMessage($message);
 	//header("Location:send_form_email.php");
 } else {
-	$message = "errors galore";
+	$message = $error_message;
 	$OUTPUT = failureMessage($message);
 }
 ?>
@@ -165,7 +166,6 @@ $rand=rand();
 $_SESSION['rand']=$rand;
    
 ?>
-
 <input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
 
 <table width="450px">
@@ -200,6 +200,8 @@ $_SESSION['rand']=$rand;
 </tr>
 
 </table>
+
+<div id="messageInfo" class="messageDisplay"><?php echo $message ?></div>
 </form>
 
 <!--#####################################################-->
