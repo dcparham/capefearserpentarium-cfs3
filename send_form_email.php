@@ -1,12 +1,9 @@
 <?php
 //echo "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>";
 session_start(); 
-$OUTPUT = ''; //used to output div success msg.
-
-//if(isset($_POST['email'])) {
-	echo $_POST['randcheck'] & ", " & $_SESSION['rand'];
+$OUTPUT = ''; 	//for displaying messages in a div.
+$errors = "";	//append to this var when errors occur.
 if(isset($_POST['email']) && $_POST['randcheck']==$_SESSION['rand']) {
-//if(isset($_POST['email'])) {
     // EDIT THE 2 LINES BELOW AS REQUIRED 
     $email_to = "dcparham@gmail.com"; 
     $email_subject = "email from CFS";
@@ -17,10 +14,16 @@ if(isset($_POST['email']) && $_POST['randcheck']==$_SESSION['rand']) {
 	$telephone="";
 	$comments="";
 
-	function successMessage(){
-    $message = "Your message was sent successfully - expect a reply soon!  Thank you!";
-    return "<div class='message'>$message</div>";
-}
+	function successMessage($message){
+		$message = $message;
+		//$message = "Your message was sent successfully - expect a reply soon!  Thank you!";
+		return "<div class='message'>$message</div>";
+	}
+	
+	function failureMessage($message){
+		//$message = "Your message was sent successfully - expect a reply soon!  Thank you!";
+		return "<div class='message'>$message</div>";
+	}
 
     function died($error) { 
         // your error code can go here
@@ -35,18 +38,16 @@ if(isset($_POST['email']) && $_POST['randcheck']==$_SESSION['rand']) {
     if(!isset($_POST['first_name']) ||
         !isset($_POST['last_name']) ||
         !isset($_POST['email']) ||
-        //!isset($_POST['telephone']) ||
+        !isset($_POST['telephone']) ||
         !isset($_POST['comments'])) {
-        died('We are sorry, but there appears to be a problem with the form you submitted.');       
+        //died('We are sorry, but there appears to be a problem with the form you submitted.');	
     }
 	
     $first_name = $_POST['first_name']; // required
     $last_name = $_POST['last_name']; // required
     $email_from = $_POST['email']; // required
     $telephone = $_POST['telephone']; // not required
-	//$telephone = $_POST['randcheck'];
     $comments = $_POST['comments']; // required
-	//$comments = $_SESSION['rand'];
     $error_message = "";
     $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
  
@@ -63,12 +64,13 @@ if(isset($_POST['email']) && $_POST['randcheck']==$_SESSION['rand']) {
     $error_message .= 'The Last Name you entered does not appear to be valid.<br />';
   }
  
-/*   if(strlen($comments) < 1) {
+ if(strlen($comments) < 1) {
     $error_message .= 'The Comments you entered do not appear to be valid.<br />'; 
-  } */
+  }
 
   if(strlen($error_message) > 0) {
-    died($error_message);
+    //died($error_message);
+	//$OUTPUT = failureMessage($error_message);
   }
     $email_message = "Form details below.\n\n";
  
@@ -86,21 +88,17 @@ if(isset($_POST['email']) && $_POST['randcheck']==$_SESSION['rand']) {
 $headers = 'From: '.$email_from."\r\n".
 'Reply-To: '.$email_from."\r\n" .
 'X-Mailer: PHP/' . phpversion();
-if (trim($email_message) == true) {
+if (trim($email_message) == true && strlen($error_message) < 1) {
 	@mail($email_to, $email_subject, $email_message, $headers);
 	$email_message = "";
 	//echo "<meta http-equiv='refresh' content='1' />";
-	$OUTPUT = successMessage();
+	$message = "Your message was sent successfully - expect a reply soon!  Thank you!";
+	$OUTPUT = successMessage($message);
 	//header("Location:send_form_email.php");
+} else {
+	$message = "errors galore";
+	$OUTPUT = failureMessage($message);
 }
-
-//echo "<script type='text/javascript'>";
-//echo "$('#success').show();";
-//echo "</script>}";
-
-	echo "<script type='text/javascript'>";
-	echo "$(document).ready(function(){";
-	echo "$('#success').show();});</script>";
 ?>
 
 <?php
@@ -120,18 +118,7 @@ if (trim($email_message) == true) {
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/image_slide.js"></script>
   <script type="text/javascript" src="js/image_slide.js"></script>
-  
   <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
-	<script type="text/javascript">
-/* 	$(document).ready(function(){ 					   
-		$("div").css("border", "3px solid red");
-	}); */
-	
-	document.getElementById("success").style.display="block";
-	function displaySuccess() {
-		window.alert("SUCCESS!");
-	}
-	</script>
 </head>
 
 
@@ -214,16 +201,6 @@ $_SESSION['rand']=$rand;
 
 </table>
 </form>
-
-<div id="success" style="display:none">CONGRATS</div>
-
-<script type="text/javascript">
-$(document).ready(function(){
-	$(#success).show();
-});
-
-document.getElementById("success").style.display="block";
-	</script>
 
 <!--#####################################################-->
 			</div><!--close form_settings-->
