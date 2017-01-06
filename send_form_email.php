@@ -93,12 +93,12 @@ if (trim($email_message) == true && strlen($error_message) < 1) {
 	@mail($email_to, $email_subject, $email_message, $headers);
 	$email_message = "";
 	//echo "<meta http-equiv='refresh' content='1' />";
-	$message = "Your message was sent successfully - expect a reply soon!  Thank you!";
-	$OUTPUT = successMessage($message);
+	$message = "1Your message was sent successfully - expect a reply soon!  Thank you!";
+	//$OUTPUT = successMessage($message);
 	//header("Location:send_form_email.php");
 } else {
-	$message = $error_message;
-	$OUTPUT = failureMessage($message);
+	$message = "0".$error_message;
+	//$OUTPUT = failureMessage($message);
 }
 ?>
 
@@ -115,13 +115,11 @@ if (trim($email_message) == true && strlen($error_message) < 1) {
   <meta name="keywords" content="enter your keywords here" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=9" />
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />  
   <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/image_slide.js"></script>
   <script type="text/javascript" src="js/image_slide.js"></script>
   <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
 </head>
-
 
 <body onLoad="javascript: home();">
   <div id="main">
@@ -200,8 +198,20 @@ $_SESSION['rand']=$rand;
 </tr>
 
 </table>
-
-<div id="messageInfo" class="messageDisplay"><?php echo $message ?></div>
+<?php 
+		if(substr($message, 0,1) == '0') {
+			$bgColor = "red";
+			$fontColor 	= "#FFF";
+		} else {
+			$bgColor 	= "blue";
+			$fontColor 	= "#FFF";	
+		}
+		
+		$message = substr($message, 1, strlen($message));
+	?>
+<div id="messageInfo" class="messageDisplay" style="background-color:<?php echo $bgColor; ?>; color:<?php $fontColor; ?>">
+	<?php echo $message; ?>
+</div>
 </form>
 
 <!--#####################################################-->
