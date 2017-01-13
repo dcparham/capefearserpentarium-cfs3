@@ -280,8 +280,7 @@ ul#menu li:hover a
   float:left;
   box-shadow: 6px 6px 10px #333;}
 
-.content_item_videos
-{ width: 558px;
+.content_item_videos { width: 558px;
   height: 360px;
   margin-top: -10px;
   margin-bottom: 20px;
@@ -290,8 +289,8 @@ ul#menu li:hover a
   float:left;
   box-shadow: 6px 6px 10px #333;}
  
-.content_item_contact
-{ width: 860px;
+.content_item_contact { 
+width: 860px;
   height: 470px;
   margin-top: -10px;
   margin-bottom: 20px;
@@ -299,10 +298,11 @@ ul#menu li:hover a
   background: #7C9C45;
   font: 100% arial;
   float:left;
-  box-shadow: 6px 6px 10px #333;}
+  box-shadow: 6px 6px 10px #333;
+  margin:0 auto;}
 
- .ourwork
-{ width: 242px;
+ .ourwork { 
+ width: 242px;
   float: left;
   padding: 20px;
   background: #7C9C45;
@@ -492,40 +492,13 @@ ul#menu li:hover a
   padding-left: 5px;
   text-shadow: 1px 1px #004C8C;}
 
-.form_settings { 
-margin: 15px 0 0 0;
-}
-
 .form_settings p { 
 padding: 0 0 4px 0;}
 
-.form_settings span
-{ float: left; 
-  width: 280px; 
-  text-align: left;}
-  
-.form_settings input, .form_settings textarea
-{ padding: 2px; 
+.form_settings
+{ border: 1px solid; 
   width: 299px; 
-  font: 100% arial; 
-  border: 1px solid #E5E5DB; 
-  background: #FFF; 
-  color: #47433F;}
-  
-.form_settings input[type="checkbox"]
-{ padding: 2px 0; 
-  width: 15px; 
-  font: 100% arial; 
-  border: 0; 
-  background: #FFF; 
-  color: #47433F;
-  margin: 28px 0;}
-
-.form_settings .submit
-{ font: 100% arial; 
-  border: 1px solid; 
-  width: 299px; 
-  margin: 0 0 0 206px; 
+  margin: 0 0 0 106px; 
   height: 26px;
   padding: 2px 0 3px 0;
   cursor: pointer; 
@@ -534,15 +507,6 @@ padding: 0 0 4px 0;}
   background: -o-linear-gradient(#43A9FF, #0183F0);
   background: -webkit-linear-gradient(#43A9FF, #0183F0);
   color: #FFF;}
-
-.form_inputs {
-padding: 5px;
-width: 471px;
-font-family: Helvetica, sans-serif;
-font-size: 1.4em;
-margin: 0px 0px 10px 0px;
-border: 2px solid #ccc; 
-}
 
 #contact-area {
 	width: 600px;
@@ -559,27 +523,6 @@ label {
 	font-size: 1.4em;
 }
 
-#contact-area input, #contact-area textarea {
-	padding: 5px;
-	width: 471px;
-	font-family: Helvetica, sans-serif;
-	font-size: 1.4em;
-	margin: 0px 0px 10px 0px;
-	border: 2px solid #ccc;
-}
-
-#contact-area textarea {
-	height: 90px;
-}
-
-#contact-area textarea:focus, #contact-area input:focus {
-	border: 2px solid #900;
-}
-
-#contact-area input.submit-button {
-	width: 100px;
-	float: right;
-}
 .header_slideshow {
   width: 900px;
   height: 250px;

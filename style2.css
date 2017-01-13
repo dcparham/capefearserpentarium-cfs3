@@ -1,8 +1,20 @@
-label {
+contact-form {
+	margin:0 auto;
+}
+
+contact-label {
     display:block;
     margin-top:20px;
     letter-spacing:2px;
+	float:left;
 }
+
+contact-info {
+	float:right;
+}
+
+.contact-thanks {
+width:471px; }
 
 /* Centre the page */
 .body {
@@ -17,46 +29,51 @@ form {
     width:459px;
 }
 
-/* Style the text boxes */
-input, textarea {
-	width:439px;
-	height:27px;
-	background:#efefef;
-	border:1px solid #dedede;
-	padding:10px;
-	margin-top:3px;
-	font-size:0.9em;
-	color:#3a3a3a;
-}
+table {
+margin: 0 auto;}
 
-input, textarea {
-    width:439px;
+/* Style the text boxes */
+#contact-area input, textarea, #submit {
+    width:462px;
     height:27px;
     background:#efefef;
     border:1px solid #dedede;
     padding:10px;
     margin-top:3px;
-    font-size:0.9em;
+    font-size:1.4em;
+	font-family: Helvetica, sans-serif;
     color:#3a3a3a;
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
     border-radius:5px;
 }
+/*
+	padding: 5px;
+	width: 471px;
+	
+	font-size: 1.4em;
+	margin: 0px 0px 10px 0px;
+	border: 2px solid #ccc;
+	*/
 
-textarea {
+#contact-area textarea {
 	height:213px;
 	background:url(../images/textarea-bg.jpg) right no-repeat #efefef;
 }
 
-input:focus, textarea:focus {
+#contact-area input:focus {
+	border: 2px solid #900;
+}
+
+#contact-area input:focus, #contact-area textarea:focus {
     border:1px solid #97d6eb;
 }
 
 #submit {
     width:127px;
     height:38px;
-    background:url(../images/submit.jpg);
-    text-indent:-9999px;
+    background:url(../images/submit.jpg) no-repeat;
+    text-indent:-10px;
     border:none;
     margin-top:20px;
     cursor:pointer;

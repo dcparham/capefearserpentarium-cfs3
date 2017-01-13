@@ -30,16 +30,14 @@ if(isset($_POST['email']) && $_POST['randcheck']==$_SESSION['rand']) {
     }
      
     // validation expected data exists
-    if(!isset($_POST['first_name']) ||
-        !isset($_POST['last_name']) ||
+    if(!isset($_POST['name']) ||
         !isset($_POST['email']) ||
         !isset($_POST['telephone']) ||
         !isset($_POST['comments'])) {
         //died('We are sorry, but there appears to be a problem with the form you submitted.');	
     }
 	
-    $first_name = $_POST['first_name']; // required="required"
-    $last_name = $_POST['last_name']; // required="required"
+    $name = $_POST['name']; // required="required"
     $email_from = $_POST['email']; // required="required"
     $telephone = $_POST['telephone']; // not required="required"
     $comments = $_POST['comments']; // required="required"
@@ -51,12 +49,8 @@ if(isset($_POST['email']) && $_POST['randcheck']==$_SESSION['rand']) {
   }
     $string_exp = "/^[A-Za-z .'-]+$/";
 	
-  if(!preg_match($string_exp,$first_name)) {
+  if(!preg_match($string_exp,$name)) {
     $error_message .= 'The First Name you entered does not appear to be valid.<br />';
-  }
- 
-  if(!preg_match($string_exp,$last_name)) {
-    $error_message .= 'The Last Name you entered does not appear to be valid.<br />';
   }
  
  if(strlen($comments) < 1) {
@@ -73,8 +67,7 @@ if(isset($_POST['email']) && $_POST['randcheck']==$_SESSION['rand']) {
       $bad = array("content-type","bcc:","to:","cc:","href");
       return str_replace($bad,"",$string);
     }
-    $email_message .= "First Name: ".clean_string($first_name)."\n";
-    $email_message .= "Last Name: ".clean_string($last_name)."\n";
+    $email_message .= "First Name: ".clean_string($name)."\n";
     $email_message .= "Email: ".clean_string($email_from)."\n";
     $email_message .= "Telephone: ".clean_string($telephone)."\n"; 
     $email_message .= "Comments: ".clean_string($comments)."\n";
@@ -121,7 +114,6 @@ if (trim($email_message) == true && strlen($error_message) < 1) {
 	  $("#messageInfo").html("");
   }
   
-  $("#contactform .btn").on('click', function () { $("#submit").trigger('click'); }); //was hoping this would trigger IE to stop ignoring 'required'
   </script>
   </head>
 
@@ -158,69 +150,43 @@ if (trim($email_message) == true && strlen($error_message) < 1) {
       <div id="content">
         <div class="content_item_contact">
 		  <div class="form_settings">
-            <h2>Contact Us</h2>
 <!--#####################################################-->
-<form name="contactform" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-<?php 
+			<form name="contactform" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+				<?php 
 
-print $OUTPUT; 
-$rand=rand();
-$_SESSION['rand']=$rand;
-   
-?>
-<div id="contact-area">
-	<input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
-
-	<table width="450px" border="0">
-	<tr>
-	 <td valign="top" class="contact_form_label"><label class="contact_form_label" for="first_name">First Name *</label></td>
-	 <td valign="top"><input required="required" id="firstName" classname ="form_inputs" type="text" name="first_name" maxlength="50" size="30" onClick="javascript: clearErrors();"></td>
-	</tr>
-
-	<tr>
-	 <td valign="top""><label for="last_name">Last Name *</label></td>
-	 <td valign="top"><input required="required" id="lastName" classname ="form_inputs" type="text" name="last_name" maxlength="50" size="30"></td>
-	</tr>
-
-	<tr>
-	 <td valign="top"><label for="email">Email Address *</label></td>
-	 <td valign="top"><input required="required" id="email" type="email" classname ="form_inputs" name="email" maxlength="80" size="30"></td>
-	</tr>
-	 
-	<tr>
-	 <td valign="top"><label for="telephone">Telephone Number</label></td>
-	 <td valign="top"><input type="text" id="phone" classname ="form_inputs" name="telephone" maxlength="30" size="30"></td>
-	</tr>
-
-	<tr>
-	 <td valign="top"><label for="comments">Comments *</label></td>
-	 <td valign="top"><textarea required="required" id="comments" classname ="form_inputs" name="comments" maxlength="1000" cols="25" rows="6"></textarea></td>
-	</tr>
-
-	<tr>
-	 <td valign="top"><label for="submit"></label></td>
-	 <td valign="top"><input style="text-align:center; width:60px" id="submit" name="submit" type="submit" value="Submit"></td>
-	</tr>
-	</table>
-</div>
-<?php 
-		if(substr($message, 0,1) == '0') {
-			//$bgColor = "red";
-			$fontColor 	= "#FFF";
-		} else {
-			//$bgColor 	= "blue";
-			$fontColor 	= "#FFF";	
-		}
-		
-		$message = substr($message, 1, strlen($message));
-	?>
-<div id="messageInfo" class="messageDisplay" style="background-color:<?php echo $bgColor; ?>; color:<?php $fontColor; ?>">
-	<?php echo $message; ?>
-</div>
-</form>
+				print $OUTPUT; 
+				$rand=rand();
+				$_SESSION['rand']=$rand;
+				   
+				?>
+				<div id="contact-area">
+					<input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
+					<div class="contact-form">	
+						<p id="contact-thanks">Thank you for coresponding with us :}</p>				
+						<p><label class="contact-label">Name</label><input name="name" class="contact-info" placeholder="Type Here" required></p>						
+						<p><label class="contact-label">Email</label><input name="email" class="contact-info" type="email" placeholder="Type Here" required></p>						
+						<p><label class="contact-label">Comments</label><textarea name="comments" class="contact-info" placeholder="Type Here" required></textarea></p>						
+						<p id="submit"><input name="submit" type="submit" value="Submit"></p>
+					</div>
+				</div>
+				<?php 
+						if(substr($message, 0,1) == '0') {
+							//$bgColor = "red";
+							$fontColor 	= "#FFF";
+						} else {
+							//$bgColor 	= "blue";
+							$fontColor 	= "#FFF";	
+						}
+						
+						$message = substr($message, 1, strlen($message));
+					?>
+				<div id="messageInfo" class="messageDisplay" style="background-color:<?php echo $bgColor; ?>; color:<?php $fontColor; ?>">
+					<?php echo $message; ?>
+				</div>
+			</form>
 
 <!--#####################################################-->
-			</div><!--close form_settings-->
+		  </div><!--close form_settings-->
 		</div><!--close content_item-->
       </div><!--close content--> 
 	  
