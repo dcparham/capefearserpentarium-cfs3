@@ -4,15 +4,9 @@ session_start();
 $OUTPUT = ''; 	//for displaying messages in a div.
 $errors = "";	//append to this var when errors occur.
 if(isset($_POST['email']) && $_POST['randcheck']==$_SESSION['rand']) {
-    // EDIT THE 2 LINES BELOW AS REQUIRED 
+    // EDIT THE 2 LINES BELOW AS required="required" 
     $email_to = "dcparham@gmail.com"; 
     $email_subject = "email from CFS";
-	
-	$first_name="";
-	$last_name="";
-	$email_from="";
-	$telephone="";
-	$comments="";
 
 	function successMessage($message){
 		$message = $message;
@@ -44,11 +38,11 @@ if(isset($_POST['email']) && $_POST['randcheck']==$_SESSION['rand']) {
         //died('We are sorry, but there appears to be a problem with the form you submitted.');	
     }
 	
-    $first_name = $_POST['first_name']; // required
-    $last_name = $_POST['last_name']; // required
-    $email_from = $_POST['email']; // required
-    $telephone = $_POST['telephone']; // not required
-    $comments = $_POST['comments']; // required
+    $first_name = $_POST['first_name']; // required="required"
+    $last_name = $_POST['last_name']; // required="required"
+    $email_from = $_POST['email']; // required="required"
+    $telephone = $_POST['telephone']; // not required="required"
+    $comments = $_POST['comments']; // required="required"
     $error_message = "";
     $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
  
@@ -106,7 +100,8 @@ if (trim($email_message) == true && strlen($error_message) < 1) {
 }
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <head>
@@ -115,11 +110,20 @@ if (trim($email_message) == true && strlen($error_message) < 1) {
   <meta name="keywords" content="enter your keywords here" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=9" />
-  <link rel="stylesheet" type="text/css" href="css/style.css" />  
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/style2.css" /><!-- for Contact Us form -->
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/image_slide.js"></script>
   <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
-</head>
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"> ##messes up banner -->
+  <script type="text/javascript">
+  function clearErrors() {
+	  $("#messageInfo").html("");
+  }
+  
+  $("#contactform .btn").on('click', function () { $("#submit").trigger('click'); }); //was hoping this would trigger IE to stop ignoring 'required'
+  </script>
+  </head>
 
 <body onLoad="javascript: home();">
   <div id="main">
@@ -135,7 +139,7 @@ if (trim($email_message) == true && strlen($error_message) < 1) {
             <li><a href="education.html">Education</a></li>
             <li><a href="directions.html">Directions</a></li>
             <li><a href="videos.html">Videos</a></li>
-            <li class="current"><a href="contact.html">Contact Us</a></li>
+            <li class="current"><a href="send_form_email.php">Contact Us</a></li>
           </ul>
         </div><!--close menubar-->	  
 	  </div><!--close banner-->	
@@ -164,46 +168,47 @@ $rand=rand();
 $_SESSION['rand']=$rand;
    
 ?>
-<input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
+<div id="contact-area">
+	<input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
 
-<table width="450px">
-<tr>
- <td valign="top"><label for="first_name">First Name *</label></td>
- <td valign="top"><input id="firstName" type="text" name="first_name" maxlength="50" size="30"></td>
-</tr>
+	<table width="450px" border="0">
+	<tr>
+	 <td valign="top" class="contact_form_label"><label class="contact_form_label" for="first_name">First Name *</label></td>
+	 <td valign="top"><input required="required" id="firstName" classname ="form_inputs" type="text" name="first_name" maxlength="50" size="30" onClick="javascript: clearErrors();"></td>
+	</tr>
 
-<tr>
- <td valign="top""><label for="last_name">Last Name *</label></td>
- <td valign="top"><input id="lastName" type="text" name="last_name" maxlength="50" size="30"></td>
-</tr>
+	<tr>
+	 <td valign="top""><label for="last_name">Last Name *</label></td>
+	 <td valign="top"><input required="required" id="lastName" classname ="form_inputs" type="text" name="last_name" maxlength="50" size="30"></td>
+	</tr>
 
-<tr>
- <td valign="top"><label for="email">Email Address *</label></td>
- <td valign="top"><input  type="text" name="email" maxlength="80" size="30"></td>
-</tr>
- 
-<tr>
- <td valign="top"><label for="telephone">Telephone Number</label></td>
- <td valign="top"><input  type="text" name="telephone" maxlength="30" size="30"></td>
-</tr>
+	<tr>
+	 <td valign="top"><label for="email">Email Address *</label></td>
+	 <td valign="top"><input required="required" id="email" type="email" classname ="form_inputs" name="email" maxlength="80" size="30"></td>
+	</tr>
+	 
+	<tr>
+	 <td valign="top"><label for="telephone">Telephone Number</label></td>
+	 <td valign="top"><input type="text" id="phone" classname ="form_inputs" name="telephone" maxlength="30" size="30"></td>
+	</tr>
 
-<tr>
- <td valign="top"><label for="comments">Comments *</label></td>
- <td valign="top"><textarea  name="comments" maxlength="1000" cols="25" rows="6"></textarea></td>
-</tr>
+	<tr>
+	 <td valign="top"><label for="comments">Comments *</label></td>
+	 <td valign="top"><textarea required="required" id="comments" classname ="form_inputs" name="comments" maxlength="1000" cols="25" rows="6"></textarea></td>
+	</tr>
 
-<tr>
- <td valign="top"><label for="submit"></label></td>
- <td valign="top"><input style="text-align:center; width:60px" id="submit" name="submit" type="submit" value="Submit"></td>
-</tr>
-
-</table>
+	<tr>
+	 <td valign="top"><label for="submit"></label></td>
+	 <td valign="top"><input style="text-align:center; width:60px" id="submit" name="submit" type="submit" value="Submit"></td>
+	</tr>
+	</table>
+</div>
 <?php 
 		if(substr($message, 0,1) == '0') {
-			$bgColor = "red";
+			//$bgColor = "red";
 			$fontColor 	= "#FFF";
 		} else {
-			$bgColor 	= "blue";
+			//$bgColor 	= "blue";
 			$fontColor 	= "#FFF";	
 		}
 		
