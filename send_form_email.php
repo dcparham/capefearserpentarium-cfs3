@@ -159,14 +159,15 @@ if (trim($email_message) == true && strlen($error_message) < 1) {
 				$_SESSION['rand']=$rand;
 				   
 				?>
-				<div id="contact-area">
-					<input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
+				<input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
+				
+				<div id="contact-area">					
 					<div class="contact-form">	
-						<p id="contact-thanks">Thank you for coresponding with us :}</p>				
-						<p><label class="contact-label">Name</label><input name="name" class="contact-info" placeholder="Type Here" required></p>						
-						<p><label class="contact-label">Email</label><input name="email" class="contact-info" type="email" placeholder="Type Here" required></p>						
-						<p><label class="contact-label">Comments</label><textarea name="comments" class="contact-info" placeholder="Type Here" required></textarea></p>						
-						<p id="submit"><input name="submit" type="submit" value="Submit"></p>
+						<p><label></label><font style="font: normal 200% arial, sans-serif; color: #FFF;">Please drop us a line!</font></p>
+						<p><label>Name</label><input name="name" class="contact-info" placeholder="Type Here" required></p>						
+						<p><label>Email</label><input name="email" class="contact-info" type="email" placeholder="Type Here" required></p>						
+						<p><label class="label-comments">Comments</label><textarea name="comments" class="contact-info" placeholder="Type Here" required></textarea></p>						
+						<p><label></label><input width="127px" type="image" src="images/submit.gif" id="submit" name="submit" alt="Submit feedback"></p>	
 					</div>
 				</div>
 				<?php 
