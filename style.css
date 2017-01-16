@@ -496,18 +496,13 @@ width: 860px;
 padding: 0 0 4px 0;}
 
 .form_settings
-{ border: 1px solid; 
-  width: 299px; 
+{ width: 299px; 
   margin: 0 0 0 106px; 
   height: 26px;
   padding: 2px 0 3px 0;
   cursor: pointer; 
-  background: #098EFF;
-  background: -moz-linear-gradient(#43A9FF, #0183F0);
-  background: -o-linear-gradient(#43A9FF, #0183F0);
-  background: -webkit-linear-gradient(#43A9FF, #0183F0);
   color: #FFF;}
-
+  
 #contact-area {
 	width: 600px;
 	margin-top: 25px;
@@ -519,8 +514,12 @@ label {
 	text-align: right;
 	margin-right: 15px;
 	width: 100px;
-	padding-top: 5px;
+	padding-top: 17px;
 	font-size: 1.4em;
+}
+
+.label-comments {
+	padding-top:100px;
 }
 
 .header_slideshow {

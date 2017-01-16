@@ -2,11 +2,9 @@ contact-form {
 	margin:0 auto;
 }
 
-contact-label {
-    display:block;
-    margin-top:20px;
-    letter-spacing:2px;
-	float:left;
+contact-greeting {
+	font: normal 200% arial, sans-serif;
+	color: #FFF;
 }
 
 contact-info {
@@ -33,7 +31,7 @@ table {
 margin: 0 auto;}
 
 /* Style the text boxes */
-#contact-area input, textarea, #submit {
+#contact-area input, textarea {
     width:462px;
     height:27px;
     background:#efefef;
@@ -69,16 +67,13 @@ margin: 0 auto;}
     border:1px solid #97d6eb;
 }
 
-#submit {
-    width:127px;
-    height:38px;
-    background:url(../images/submit.jpg) no-repeat;
-    text-indent:-10px;
-    border:none;
-    margin-top:20px;
-    cursor:pointer;
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
-
-	#submit:hover {
-	    opacity:.9;
-	}
