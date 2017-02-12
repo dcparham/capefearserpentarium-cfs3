@@ -2,32 +2,74 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <head>
-  <title>Cape Fear Serpentarium</title>
-  <meta name="description" content="free website template" />
-  <meta name="keywords" content="enter your keywords here" />
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=9" />
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/image_slide.js"></script>
+	<title>Cape Fear Serpentarium - Videos</title>
+	<meta name="description" content="free website template" />
+	<meta name="keywords" content="enter your keywords here" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/style2.css" />
+	<link rel="stylesheet" href="css/styles_menu2.css"><!--menu2-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><!--menu2-->
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/image_slide.js"></script>
+
+	<script src="js/videoPlayer.js" type="text/javascript"></script>
+
+	<!-- styles needed by jScrollPane -->
+	<link type="text/css" href="style/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+
+	<!-- latest jQuery direct from google's CDN -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+	<!-- the mousewheel plugin - optional to provide mousewheel support -->
+	<script type="text/javascript" src="script/jquery.mousewheel.js"></script>
+
+	<!-- the jScrollPane script -->
+	<script type="text/javascript" src="script/jquery.jscrollpane.min.js"></script>
+
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		$(function() {
+			//$('.scroll-pane').jScrollPane();
+		});
+	});
+</script>
 </head>
 
-<body>
+<body onload="playVideo();">
   <div id="main">
     <div id="header">
 	  <div id="banner">
 	    <div id="welcome">
 	      <h1>Cape Fear Serpentarium</h1></ br><span id="address">20 Orange St, Wilmington, NC (910) 762-1669</span>
 	    </div><!--close welcome-->
-	    <div id="menubar">
-          <ul id="menu">
-            <li><a href="index.html">Home</a></li>
+	    <div id="cssmenu">
+          <ul>
+            <!--<li class="current"><a href="index.html">Home</a></li>
             <li><a href="groupRates.html">Group Rates</a></li>
             <li><a href="education.html">Education</a></li>
             <li><a href="directions.html">Directions</a></li>
-            <li class="current"><a href="videos.html">Videos</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="videos.html">Videos</a></li>
+            <li><a href="send_form_email.php">Contact Us</a></li>-->
+
+			<li><a href="index.html"><i class="fa fa-fw fa-home current"></i>Home</a></li>
+			<li><a href="groupRates.html"><i class="fa fa-fw fa-sitemap"></i>Group Rates</a></li>
+			<li><a href="education.html"><i class="fa fa-fw fa-mortar-board"></i>Education</a>
+				<!-- <ul>
+				<li><a href="education1.html"><i class="fa fa-fw fa-mortar-board"></i>Education1</a></li>
+				<li><a href="education2.html"><i class="fa fa-fw fa-mortar-board"></i>Education2</a></li>
+				<li><a href="education3.html"><i class="fa fa-fw fa-mortar-board"></i>Education3</a></li>
+				<li><a href="education4.html"><i class="fa fa-fw fa-mortar-board"></i>Education4</a></li>
+				</ul> -->
+			</li>
+			<li><a href="directions.html"><i class="fa fa-fw fa-road"></i>Directions</a></li>
+			<li><a href="videos.html" style="background-color: #7C9C45"><i class="fa fa-fw fa-video-camera"></i>Videos</a></li>
+			<li><a href="send_form_email.php"><i class="fa fa-fw fa-paper-plane-o"></i>Contact Us</a></li>
           </ul>
+
         </div><!--close menubar-->	  
 	  </div><!--close banner-->	
     </div><!--close header-->	
@@ -44,21 +86,50 @@
 
 	<div id="content">
         <div class="content_item_videos">
-          <h2>Our Work</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ullamcorper, massa eu iaculis imperdiet, turpis nunc aliquam augue, eget condimentum lectus velit vitae urna. Curabitur eu feugiat erat. Nam et arcu sit amet magna facilisis accumsan vel nec mauris. Vivamus interdum adipiscing molestie. Vestibulum sollicitudin massa eget turpis cursus eget ullamcorper odio pharetra. Sed dictum lacus sed erat molestie id aliquet enim vestibulum.</p>
-		    <div class="content_container">
-		      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim. Aliquam facilisis neque non nunc posuere eget volutpat metus tincidunt.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim. Aliquam facilisis neque non nunc posuere eget volutpat metus tincidunt.</p>
-		    	<div class="button_small">
-		        <a href="#">Read more</a>
-		      </div><!--close button_small-->
-		    </div><!--close content_container-->
-            <div class="content_container">
-		      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim. Aliquam facilisis neque non nunc posuere eget volutpat metus tincidunt.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim. Aliquam facilisis neque non nunc posuere eget volutpat metus tincidunt.</p>          
-		    	<div class="button_small">
-		        <a href="#">Read more</a>
-		        </div><!--close button_small-->		  
-		    </div><!--close content_container-->				
-		</div><!--close content_item-->
+		
+		<div>
+			<h1>Animal Righteousness: The Terror of the Animal Rights Movement</h1>
+				<script src="https://www.youtube.com/iframe_api"></script>
+			<div id="videos_player1"></div>
+		</div>
+		
+		<div>
+			<h1>Cape Fear Serpentarium</h1>
+				<script src="https://www.youtube.com/iframe_api"></script>
+			<div id="player2"></div>
+		</div>
+		
+		<div>
+			<h1>The Bushmaster: Silent Fate of the American Tropics</h1>
+				<script src="https://www.youtube.com/iframe_api"></script>
+			<div id="player3"></div>
+		</div>
+		
+		<div>
+			<h1>Bubble Boy</h1>
+				<script src="https://www.youtube.com/iframe_api"></script>
+			<div id="player4"></div>
+		</div>
+		
+		<div>
+			<h1>King Cobra Feeding</h1>
+				<script src="https://www.youtube.com/iframe_api"></script>
+			<div id="player5"></div>
+		</div>
+		
+		<div>
+			<h1>Gaboon Viper Feeding</h1>
+				<script src="https://www.youtube.com/iframe_api"></script>
+			<div id="player6"></div>
+		</div>
+		
+		<div>
+			<h1>Our Local TV AD</h1>
+				<script src="https://www.youtube.com/iframe_api"></script>
+			<div id="player7"></div>
+		</div>
+			
+		</div><!--close content_item_videos-->
      </div><!--close content--> 
 	</div><!--close site_content--> 
 	
